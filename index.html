@@ -281,8 +281,8 @@
         window.addEventListener('load', function() {
             
             // Check if the Webex global messaging object is ready
-            if (1==1) { // (window.IMI && window.IMI.ICMessaging) {
-                
+            if (window.IMI && window.IMI.ICMessaging) {
+                console.log("site: window.IMI && window.IMI.ICMessaging == true");
                 // Define the JSON object
                 const demoUserPayload = {
                     "customerId": "DEMO-12345",
@@ -292,10 +292,12 @@
                 };
                 const strPayload = JSON.stringify(demoUserPayload)
 
+                console.log("site: before setCustomFields");
                 // Convert the JSON object to a string and send it to Webex
-                //window.IMI.ICMessaging.setCustomFields({
-                //    "tdsUserData": strPayload
-                //});
+                window.IMI.ICMessaging.setCustomFields({
+                    "tdsUserData": strPayload
+                });
+                console.log("site: after setCustomFields");
 
                 console.log("Webex Demo: Static JSON payload successfully attached to the chat widget.",strPayload);
                 
